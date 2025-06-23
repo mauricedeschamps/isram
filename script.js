@@ -1,4 +1,20 @@
 // 多言語対応データ
+
+const translations = {
+    "en": {
+        // ...他の翻訳はそのまま...
+        "contact": "Contact me<br>mementomorikatsu@gmail.com"
+    },
+    "ja": {
+        // ...他の翻訳はそのまま...
+        "contact": "連絡先<br>mementomorikatsu@gmail.com"
+    },
+    "ar": {
+        // ...他の翻訳はそのまま...
+        "contact": "اتصل بي<br>mementomorikatsu@gmail.com"
+    }
+};
+
 const translations = {
     "en": {
         "title": "Tokyo Halal & Muslim Guide",
