@@ -1,0 +1,96 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #2c8a4a;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.language-switcher {
+    margin-bottom: 1rem;
+}
+
+.language-switcher button {
+    padding: 0.3rem 0.6rem;
+    margin: 0 0.3rem;
+    background: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+section {
+    margin-bottom: 2rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #2c8a4a;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.link-list {
+    list-style: none;
+    padding: 0;
+}
+
+.link-list li {
+    margin: 0.8rem 0;
+}
+
+.link-list a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.link-list a:hover {
+    background: #f0f0f0;
+}
+
+.link-list img {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.8rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #333;
+    color: white;
+    margin-top: 2rem;
+}
+
+/* アラビア語用のRTL（右から左）スタイル */
+[dir="rtl"] body {
+    text-align: right;
+    font-family: 'Arial', 'Tahoma', sans-serif;
+}
+
+[dir="rtl"] .link-list img {
+    margin-right: 0;
+    margin-left: 0.8rem;
+}

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#dc3545">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Kerama islands</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22skyblue%22/><text y=%22.9em%22 font-size=%2290%22>🏝️</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22skyblue%22/><text y=%22.9em%22 font-size=%2290%22>🏝️</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #006D8F;
+            --secondary: #003D4D;
+            --text: #f0f0f0;
+            --bg: #121212;
+            --card-bg: #1e1e1e;
+            --light-text: #333;
+            --light-bg: #f5f5f5;
+            --light-card-bg: #ffffff;
+        }
+        
+        [data-theme="light"] {
+            --primary: #006D8F;
+            --secondary: #0093B8;
+            --text: #333;
+            --bg: #f5f5f5;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        button {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        button:hover {
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            margin: 1rem 0 0.5rem;
+            color: var(--secondary);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: block;
+        }
+        
+        .ferry-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        .ferry-table th, .ferry-table td {
+            border: 1px solid var(--secondary);
+            padding: 0.5rem;
+            text-align: left;
+        }
+        
+        .ferry-table th {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .island-section {
+            margin-bottom: 2rem;
+        }
+        
+        .beach-list, .facility-list {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+        
+        .beach-list li, .facility-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .beach-list li::before {
+            content: "🏖️";
+            position: absolute;
+            left: 0;
+        }
+        
+        .facility-list li::before {
+            content: "📍";
+            position: absolute;
+            left: 0;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--secondary);
+        }
+        
+        .update-date {
+            font-style: italic;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .map-container {
+            position: relative;
+            margin: 1rem 0;
+        }
+        
+        .map-label {
+            position: absolute;
+            background-color: rgba(0, 109, 143, 0.8);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .transport-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: rgba(0, 109, 143, 0.1);
+            border-radius: 8px;
+        }
+        
+        .transport-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: var(--primary);
+        }
+        
+        .transport-info {
+            flex: 1;
+        }
+        
+        .to-top-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .to-top-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+        }
+        
+        .to-top-button:hover {
+            background-color: var(--secondary);
+        }
+        
+        .external-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .external-link:hover {
+            text-decoration: underline;
+        }
+        
+        .accommodation-image {
+            max-height: 300px;
+            object-fit: cover;
+            margin: 1rem 0;
+        }
+        
+        .ferry-links {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .ferry-link {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .ferry-link:hover {
+            background-color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 lang="en">Okinawa Kerama Islands Tourism Guide</h1>
+        <h1 lang="ja" class="hidden">慶良間諸島観光ガイド</h1>
+        <div class="controls">
+            <button id="theme-toggle"><i class="fas fa-moon"></i> <span lang="en">Dark Mode</span><span lang="ja" class="hidden">ダークモード</span></button>
+            <button id="lang-toggle"><i class="fas fa-language"></i> <span lang="en">日本語</span><span lang="ja" class="hidden">English</span></button>
+        </div>
+    </header>
+    
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4E5n8zGzQTe9ldQcy6GUvZ93UW6rhL2X3W_K-_Bpb8OSN9MJ6NiRNH68&s=10">
+
+    <div class="container">
+        <section class="card">
+            <h2 lang="en">Kerama Islands Map</h2>
+            <h2 lang="ja" class="hidden">慶良間諸島マップ</h2>
+            <div class="map-container">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR31CQlY31kHgPkFH8qvLpjIuLvW32ax0mOpVEMwSs0xPMVfchpoQ5QUTUj&s=10" alt="Map of Kerama Islands">
+                <div class="map-label" style="top: 20%; left: 20%;"></div>
+                <div class="map-label" style="top: 50%; left: 20%;"></div>
+                <div class="map-label" style="top: 60%; left: 80%;"></div>
+            </div>
+            <p lang="en">The Kerama Islands are a group of 22 islands located about 40 kilometers west of Okinawa Main Island. The three main islands for tourism are Zamami, Aka, and Tokashiki.</p>
+            <p lang="ja" class="hidden">慶良間諸島は沖縄本島の西約40kmに位置する22の島々からなる群島です。観光の主要な島は座間味島、阿嘉島、渡嘉敷島の3つです。</p>
+        </section>
+        
+        <section class="card">
+            <h2 lang="en">Tomari Port Information</h2>
+            <h2 lang="ja" class="hidden">泊港情報</h2>
+            <p class="update-date" lang="en">Last updated: <span id="current-date"></span></p>
+            <p class="update-date" lang="ja" class="hidden">最終更新: <span id="current-date-ja"></span></p>
+            
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdAPNXL3ILqwI2CH6cmSzM6forL81hyKfkydVy27cFtor2s9yr9KlCL9Hk&s=10">
+            
+            <h3 lang="en">Access from Naha Airport</h3>
+            <h3 lang="ja" class="hidden">那覇空港からのアクセス</h3>
+            
+            <div class="transport-option">
+                <div class="transport-icon"><i class="fas fa-bus"></i></div>
+                <div class="transport-info">
+                    <p lang="en"><strong>Bus:</strong> Take bus #99 (Airport Shuttle) from Naha Airport to Tomari Port (about 25 minutes, ¥260)</p>
+                    <p lang="ja" class="hidden"><strong>バス:</strong> 那覇空港から99番バス（空港シャトル）で泊港まで（約25分、260円）</p>
+                </div>
+            </div>
+            
+            <div class="transport-option">
+                <div class="transport-icon"><i class="fas fa-bus"></i></div>
+                <div class="transport-info">
+                    <p lang="en"><strong>Bus:</strong> Take bus #120 (Kokusaidori Line) from Naha Airport to Tomari Port (about 30 minutes, ¥260)</p>
+                    <p lang="ja" class="hidden"><strong>バス:</strong> 那覇空港から120番バス（国際通り線）で泊港まで（約30分、260円）</p>
+                </div>
+            </div>
+            
+            <h3 lang="en">Access from Miebashi Station (Yui Rail)</h3>
+            <h3 lang="ja" class="hidden">美栄橋駅からのアクセス</h3>
+            
+            <div class="transport-option">
+                <div class="transport-icon"><i class="fas fa-walking"></i></div>
+                <div class="transport-info">
+                    <p lang="en"><strong>Walking:</strong> About 15 minutes (1.2km) from Miebashi Station</p>
+                    <p lang="ja" class="hidden"><strong>徒歩:</strong> 美栄橋駅から約15分 (1.2km)</p>
+                </div>
+            </div>
+            
+            <div class="transport-option">
+                <div class="transport-icon"><i class="fas fa-bus"></i></div>
+                <div class="transport-info">
+                    <p lang="en"><strong>Bus:</strong> Take bus #1, #2, or #5 from Miebashi Station (about 5 minutes)</p>
+                    <p lang="ja" class="hidden"><strong>バス:</strong> 美栄橋駅から1番、2番、5番バスに乗車 (約5分)</p>
+                </div>
+            </div>
+            
+            <h3 lang="en">Ferry Terminals</h3>
+            <h3 lang="ja" class="hidden">フェリー乗り場</h3>
+            <ul class="facility-list">
+                <li lang="en">Terminal 1: Zamami and Aka Islands (Queen Zamami, Marine Liner)</li>
+                <li lang="ja" class="hidden">第1ターミナル: 座間味島・阿嘉島行き (クイーンざまみ、マリンライナー)</li>
+                <li lang="en">Terminal 2: Tokashiki Island (Tokashiki-maru, Ferry Tokashiki)</li>
+                <li lang="ja" class="hidden">第2ターミナル: 渡嘉敷島行き (とかしく丸、フェリーとかしく)</li>
+                <li lang="en">Terminal 3: High-speed boats (Zamami, Aka, and Tokashiki Islands)</li>
+                <li lang="ja" class="hidden">第3ターミナル: 高速船 (座間味島・阿嘉島・渡嘉敷島行き)</li>
+            </ul>
+            
+            <h3 lang="en">Ferry Schedule (Sample)</h3>
+            <h3 lang="ja" class="hidden">フェリースケジュール (例)</h3>
+            <table class="ferry-table">
+                <thead>
+                    <tr>
+                        <th lang="en">Destination</th>
+                        <th lang="ja" class="hidden">行先</th>
+                        <th lang="en">Departure Time</th>
+                        <th lang="ja" class="hidden">出発時間</th>
+                        <th lang="en">Duration</th>
+                        <th lang="ja" class="hidden">所要時間</th>
+                        <th lang="en">Fare (¥)</th>
+                        <th lang="ja" class="hidden">運賃 (¥)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Zamami</td>
+                        <td>09:00, 11:00, 14:30</td>
+                        <td>70 min</td>
+                        <td>3,140</td>
+                    </tr>
+                    <tr>
+                        <td>Aka</td>
+                        <td>09:00, 11:00, 14:30</td>
+                        <td>50 min</td>
+                        <td>2,820</td>
+                    </tr>
+                    <tr>
+                        <td>Tokashiki</td>
+                        <td>10:00, 12:30, 16:00</td>
+                        <td>35 min</td>
+                        <td>2,470</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="ferry-links">
+                <a href="https://www.vill.zamami.okinawa.jp/m/" class="ferry-link" target="_blank" lang="en">Zamami Village</a>
+                <a href="https://www.vill.tokashiki.okinawa.jp/soshiki/sitekanri/5/2/1365.html" class="ferry-link" target="_blank" lang="en">Tokashiki Village</a>
+                <a href="https://tokashiki-ferry.jp/Senpaku/portal" class="ferry-link" target="_blank" lang="en">Tokashiki Booking</a>
+                
+                <a href="https://www.vill.zamami.okinawa.jp/m/" class="ferry-link" target="_blank" lang="ja" class="hidden">座間味村</a>
+                <a href="https://www.vill.tokashiki.okinawa.jp/soshiki/sitekanri/5/2/1365.html" class="ferry-link" target="_blank" lang="ja" class="hidden">渡嘉敷村</a>
+                <a href="https://tokashiki-ferry.jp/Senpaku/portal" class="ferry-link" target="_blank" lang="ja" class="hidden">渡嘉敷島予約</a>
+            </div>
+            
+            <h3 lang="en">Accommodation Near Tomari Port</h3>
+            <h3 lang="ja" class="hidden">泊港近くの宿泊施設</h3>
+            
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvOEcGSy-OdVVzldcH6Po61byH_Bgkwu_ntBHigus3kiq7m326T_JRHBXF&s=10" alt="MY PLACE Guesthouse" class="accommodation-image">
+            
+            <p><strong>MY PLACE</strong> <span lang="en">- Budget accommodation located north of Tomari Port. Offers dormitory beds and private rooms. Just beside High Speed Boat Terminal 3.</span><span lang="ja" class="hidden">- 泊港の北側にある格安宿泊施設。ドミトリーとプライベートルームがあります。高速艇乗り場の前徒歩0分。</span></p>
+            
+            <p lang="en">Address: 3-12-12 Maejima, Naha, Okinawa (5-minute walk from Tomari Port)</p>
+            <p lang="ja" class="hidden">住所: 沖縄県那覇市前島3-12-12 (泊港から徒歩5分)</p>
+            
+            <p lang="en">Phone: 098-123-4567</p>
+            <p lang="ja" class="hidden">電話: 098-123-4567</p>
+            
+            <p lang="en">Website: <a href="https://myplace-guesthouse.com/ja/access/" class="external-link" target="_blank">https://myplace-guesthouse.com/ja/access/</a></p>
+            <p lang="ja" class="hidden">ウェブサイト: <a href="https://myplace-guesthouse.com/ja/access/" class="external-link" target="_blank">https://myplace-guesthouse.com/ja/access/</a></p>
+            
+            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/695195216.jpg?k=a741adb5461b3a0db18b85a0955707e28e177406a48ba514fbac0c84a41bd0f6&o=&hp=1" class="accommodation-image">
+        </section>
+        
+        <section class="card">
+            <h2 lang="en">Inter-Island Transportation</h2>
+            <h2 lang="ja" class="hidden">島間移動</h2>
+            
+            <h3 lang="en">Between Zamami and Aka Islands</h3>
+            <h3 lang="ja" class="hidden">座間味島と阿嘉島間</h3>
+            <p lang="en">Regular ferry service connects Zamami and Aka islands throughout the day. The crossing takes about 15 minutes.</p>
+            <p lang="ja" class="hidden">座間味島と阿嘉島の間は1日に数便のフェリーが運航しています。所要時間は約15分です。</p>
+            
+            <h3 lang="en">Between Zamami and Tokashiki Islands</h3>
+            <h3 lang="ja" class="hidden">座間味島と渡嘉敷島間</h3>
+            <p lang="en">There is no direct ferry between Zamami and Tokashiki. You need to return to Tomari Port on Okinawa Main Island and transfer.</p>
+            <p lang="ja" class="hidden">座間味島と渡嘉敷島の間には直行便はありません。沖縄本島の泊港まで戻って乗り換える必要があります。</p>
+            
+            <h3 lang="en">Inter-Island Ferry Schedule</h3>
+            <h3 lang="ja" class="hidden">島間フェリースケジュール</h3>
+            <table class="ferry-table">
+                <thead>
+                    <tr>
+                        <th lang="en">Route</th>
+                        <th lang="ja" class="hidden">航路</th>
+                        <th lang="en">Frequency</th>
+                        <th lang="ja" class="hidden">運行頻度</th>
+                        <th lang="en">Duration</th>
+                        <th lang="ja" class="hidden">所要時間</th>
+                        <th lang="en">Fare (¥)</th>
+                        <th lang="ja" class="hidden">運賃 (¥)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Zamami ↔ Aka</td>
+                        <td>4-5 times daily</td>
+                        <td>15 min</td>
+                        <td>400</td>
+                    </tr>
+                    <tr>
+                        <td>Zamami ↔ Tokashiki</td>
+                        <td>No direct service</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="card">
+            <h2 lang="en">Island Information</h2>
+            <h2 lang="ja" class="hidden">島の情報</h2>
+            
+            <div class="island-section">
+                <h3 lang="en">Zamami Island</h3>
+                <h3 lang="ja" class="hidden">座間味島</h3>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLURA3EAITigpWtYTYKGfdjLSptFTYNchI8CW4E-p3DhEkLBxzYfHjZH6&s=10">
+                <p lang="en">Zamami is the largest of the three main Kerama Islands, known for its beautiful beaches and whale watching in winter.</p>
+                <p lang="ja" class="hidden">座間味島は慶良間諸島の主要3島の中で最も大きく、美しいビーチと冬のホエールウォッチングで知られています。</p>
+                
+                <h4 lang="en">Main Beaches</h4>
+                <h4 lang="ja" class="hidden">主なビーチ</h4>
+                <ul class="beach-list">
+                    <li lang="en"><strong>Furuzamami Beach</strong> - Famous for its white sand and clear waters, great for snorkeling</li>
+                    <li lang="ja" class="hidden"><strong>古座間味ビーチ</strong> - 白い砂と透明な海で有名、シュノーケリングに最適</li>
+                    <li lang="en"><strong>Ama Beach</strong> - Smaller beach near the village, good for swimming</li>
+                    <li lang="ja" class="hidden"><strong>阿真ビーチ</strong> - 集落近くの小さなビーチ、泳ぐのに適しています</li>
+                </ul>
+                
+                <h4 lang="en">Facilities</h4>
+                <h4 lang="ja" class="hidden">施設</h4>
+                <ul class="facility-list">
+                    <li lang="en">Ferry Terminal (connects to Aka and Tomari Port)</li>
+                    <li lang="ja" class="hidden">フェリー乗り場 (阿嘉島と泊港への連絡)</li>
+                    <li lang="en">Tourist Information Center</li>
+                    <li lang="ja" class="hidden">観光案内所</li>
+                    <li lang="en">Rental shops (bicycles, snorkel gear)</li>
+                    <li lang="ja" class="hidden">レンタルショップ (自転車、シュノーケル用具)</li>
+                    <li lang="en">Several restaurants and cafes</li>
+                    <li lang="ja" class="hidden">いくつかのレストランとカフェ</li>
+                </ul>
+            </div>
+            
+            <div class="island-section">
+                <h3 lang="en">Aka Island</h3>
+                <h3 lang="ja" class="hidden">阿嘉島</h3>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPipEcuPpVf4PANI-POTHXo-P3SchcjPncixU00QzXFqclvmGdeNmhQPop&s=10">
+                <p lang="en">Aka is a smaller island connected to Zamami by a short ferry ride, known for its friendly deer population.</p>
+                <p lang="ja" class="hidden">阿嘉島は座間味島から短いフェリーで行ける小さな島で、人懐っこい鹿の群れで知られています。</p>
+                
+                <h4 lang="en">Main Beaches</h4>
+                <h4 lang="ja" class="hidden">主なビーチ</h4>
+                <ul class="beach-list">
+                    <li lang="en"><strong>Nishibama Beach</strong> - Long sandy beach with shallow waters</li>
+                    <li lang="ja" class="hidden"><strong>ニシバマビーチ</strong> - 浅瀬が続く長い砂浜</li>
+                    <li lang="en"><strong>Hizushi Beach</strong> - Smaller beach popular with locals</li>
+                    <li lang="ja" class="hidden"><strong>ヒヅシビーチ</strong> - 地元の人に人気の小さなビーチ</li>
+                </ul>
+                
+                <h4 lang="en">Facilities</h4>
+                <h4 lang="ja" class="hidden">施設</h4>
+                <ul class="facility-list">
+                    <li lang="en">Ferry Terminal (connects to Zamami and Tomari Port)</li>
+                    <li lang="ja" class="hidden">フェリー乗り場 (座間味島と泊港への連絡)</li>
+                    <li lang="en">Small village with restaurants</li>
+                    <li lang="ja" class="hidden">レストランがある小さな集落</li>
+                    <li lang="en">Bicycle rental available</li>
+                    <li lang="ja" class="hidden">自転車レンタルあり</li>
+                </ul>
+            </div>
+            
+            <div class="island-section">
+                <h3 lang="en">Tokashiki Island</h3>
+                <h3 lang="ja" class="hidden">渡嘉敷島</h3>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLk4gHaJRvLXINbwZ6cV7-_tK_zVZnDIJKnXNBaZ7hhC81YF-rCnKRdi-6&s=10">
+                <p lang="en">The closest Kerama Island to Okinawa Main Island, known for its stunning beaches and marine activities.</p>
+                <p lang="ja" class="hidden">沖縄本島に最も近い慶良間諸島の島で、素晴らしいビーチとマリンスポーツで知られています。</p>
+                
+                <h4 lang="en">Main Beaches</h4>
+                <h4 lang="ja" class="hidden">主なビーチ</h4>
+                <ul class="beach-list">
+                    <li lang="en"><strong>Tokashiku Beach</strong> - Beautiful crescent-shaped beach</li>
+                    <li lang="ja" class="hidden"><strong>渡嘉志久ビーチ</strong> - 美しい三日月形のビーチ</li>
+                    <li lang="en"><strong>Aharen Beach</strong> - Most popular beach with facilities</li>
+                    <li lang="ja" class="hidden"><strong>阿波連ビーチ</strong> - 施設が整った最も人気のあるビーチ</li>
+                </ul>
+                
+                <h4 lang="en">Facilities</h4>
+                <h4 lang="ja" class="hidden">施設</h4>
+                <ul class="facility-list">
+                    <li lang="en">Ferry Terminal (connects to Tomari Port)</li>
+                    <li lang="ja" class="hidden">フェリー乗り場 (泊港への連絡)</li>
+                    <li lang="en">Tourist Information Center</li>
+                    <li lang="ja" class="hidden">観光案内所</li>
+                    <li lang="en">Several restaurants near the port and beaches</li>
+                    <li lang="ja" class="hidden">港とビーチ近くにいくつかのレストラン</li>
+                    <li lang="en">Rental shops (snorkel gear, kayaks)</li>
+                    <li lang="ja" class="hidden">レンタルショップ (シュノーケル用具、カヤック)</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- 最初に戻るボタン -->
+        <div class="to-top-container">
+            <a href="#" class="to-top-button" id="main-to-top">
+                <span lang="en"><i class="fas fa-arrow-up"></i> Back to Top</span>
+                <span lang="ja" class="hidden"><i class="fas fa-arrow-up"></i> 最初に戻る</span>
+            </a>
+        </div>
+    </div>
+    
+    <footer>
+        <p lang="en">Contact me: <a href="mailto:mementomorikatsu@gmail.com" style="color: white;">mementomorikatsu@gmail.com</a></p>
+        <p lang="ja" class="hidden">連絡先: <a href="mailto:mementomorikatsu@gmail.com" style="color: white;">mementomorikatsu@gmail.com</a></p>
+    </footer>
+    
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <script>
+        // Set current date
+        const today = new Date();
+        document.getElementById('current-date').textContent = today.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+        document.getElementById('current-date-ja').textContent = today.toLocaleDateString('ja-JP', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+        
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            
+            const isEnglish = document.documentElement.getAttribute('lang') === 'en';
+            if (newTheme === 'dark') {
+                themeToggle.querySelector('span[lang="en"]').textContent = 'Dark Mode';
+                themeToggle.querySelector('span[lang="ja"]').textContent = 'ダークモード';
+            } else {
+                themeToggle.querySelector('span[lang="en"]').textContent = 'Light Mode';
+                themeToggle.querySelector('span[lang="ja"]').textContent = 'ライトモード';
+            }
+        });
+        
+        // Language toggle
+        const langToggle = document.getElementById('lang-toggle');
+        langToggle.addEventListener('click', () => {
+            const currentLang = document.documentElement.getAttribute('lang');
+            const newLang = currentLang === 'en' ? 'ja' : 'en';
+            document.documentElement.setAttribute('lang', newLang);
+            
+            // Toggle visibility of language-specific elements
+            document.querySelectorAll('[lang="en"]').forEach(el => {
+                el.classList.toggle('hidden', newLang !== 'en');
+            });
+            document.querySelectorAll('[lang="ja"]').forEach(el => {
+                el.classList.toggle('hidden', newLang !== 'ja');
+            });
+            
+            // Update button text
+            if (newLang === 'en') {
+                langToggle.querySelector('span[lang="en"]').textContent = '日本語';
+                langToggle.querySelector('span[lang="ja"]').textContent = 'English';
+            } else {
+                langToggle.querySelector('span[lang="en"]').textContent = 'Japanese';
+                langToggle.querySelector('span[lang="ja"]').textContent = '英語';
+            }
+            
+            // Update theme button text
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                themeToggle.querySelector('span[lang="en"]').textContent = 'Dark Mode';
+                themeToggle.querySelector('span[lang="ja"]').textContent = 'ダークモード';
+            } else {
+                themeToggle.querySelector('span[lang="en"]').textContent = 'Light Mode';
+                themeToggle.querySelector('span[lang="ja"]').textContent = 'ライトモード';
+            }
+        });
+        
+        // Back to top buttons
+        const backToTop = document.getElementById('back-to-top');
+        const mainToTop = document.getElementById('main-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        mainToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Add to home screen prompt
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            const installPrompt = e;
+            // You can show your own install button here if desired
+        });
+    </script>
+</body>
+</html>
