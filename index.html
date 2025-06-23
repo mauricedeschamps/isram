@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>東京ハラル・イスラム情報ガイド</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="language-switcher">
+            <button onclick="changeLanguage('ar')">العربية</button>
+            <button onclick="changeLanguage('en')">English</button>
+            <button onclick="changeLanguage('ja')">日本語</button>
+        </div>
+        <h1 data-i18n="title">東京ハラル・イスラム情報ガイド</h1>
+        <p data-i18n="subtitle">モスク・ハラル店・便利アプリへのリンク集</p>
+    </header>
+
+    <div class="container">
+        <!-- モスク情報 -->
+        <section>
+            <h2 data-i18n="mosques">モスク</h2>
+            <ul class="link-list">
+                <li>
+                    <a href="https://tokyocamii.org/" target="_blank">
+                        <img src="images/mosque-icon.png" alt="Mosque">
+                        <span data-i18n="tokyo-camii">東京ジャーミイ（代々木上原）</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.icc-japan.com/" target="_blank">
+                        <img src="images/mosque-icon.png" alt="Mosque">
+                        <span data-i18n="icc-mosque">ICCモスク（西早稲田）</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- ハラルレストラン -->
+        <section>
+            <h2 data-i18n="halal-restaurants">ハラルレストラン</h2>
+            <ul class="link-list">
+                <li>
+                    <a href="https://japanhalal.or.jp/shop" target="_blank">
+                        <img src="images/restaurant-icon.png" alt="Restaurant">
+                        <span data-i18n="japan-halal-list">ジャパン・ハラール・ファンデーション認証店一覧</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.halalgourmet.jp/" target="_blank">
+                        <img src="images/restaurant-icon.png" alt="Restaurant">
+                        <span data-i18n="halal-gourmet-japan">ハラルグルメジャパン（検索サイト）</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 便利アプリ -->
+        <section>
+            <h2 data-i18n="useful-apps">便利アプリ</h2>
+            <ul class="link-list">
+                <li>
+                    <a href="https://play.google.com/store/apps/details?id=com.halalgourmet.japan" target="_blank">
+                        <img src="images/app-icon.png" alt="App">
+                        <span data-i18n="halal-gourmet-app">ハラルグルメジャパン（アプリ版）</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.qibla-finder.com/" target="_blank">
+                        <img src="images/app-icon.png" alt="App">
+                        <span data-i18n="qibla-finder">キブラ方向検索アプリ</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 観光情報 -->
+        <section>
+            <h2 data-i18n="travel-info">観光情報</h2>
+            <ul class="link-list">
+                <li>
+                    <a href="https://www.gotokyo.org/en/plan/tokyo-islamic-guide/index.html" target="_blank">
+                        <img src="images/travel-icon.png" alt="Travel">
+                        <span data-i18n="gotokyo-guide">東京イスラム観光ガイド（公式）</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.muslimtravel.jp/" target="_blank">
+                        <img src="images/travel-icon.png" alt="Travel">
+                        <span data-i18n="muslim-travel-japan">Muslim Travel Japan</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p data-i18n="footer-text">© 2024 東京ハラル情報ガイド - イスラム教徒のための便利リンク集</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
