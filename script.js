@@ -16,7 +16,9 @@ const Translations = {
     subtitle: "モスク・ハラル店・便利アプリへのリンク集",
     mosques: "モスク",
     "tokyo-camii": "東京ジャーミイ（代々木上原）",
-    "icc-mosque": "ICCモスク（西早稲田）",
+    "Japan Islamic Culture Center Masjid (Mosque) Otsuka": "日本イスラーム文化センター マスジド（モスク）大塚
+
+",
     "halal-restaurants": "ハラルレストラン",
     "japan-halal-list": "ジャパン・ハラール・ファンデーション認証店一覧",
     "halal-gourmet-japan": "ハラルグルメジャパン（検索サイト）",
@@ -52,7 +54,7 @@ const Translations = {
     subtitle: "روابط للمساجد ومطاعم الحلال والتطبيقات المفيدة",
     mosques: "المساجد",
     "tokyo-camii": "مسجد طوكيو (يويوجي أويهارا)",
-    "icc-mosque": "مسجد ICC (نيشي واسيدا)",
+    "Japan Islamic Culture Center Masjid (Mosque) Otsuka": "مركز الثقافة الإسلامية الياباني، مسجد أوتسوكا",
     "halal-restaurants": "مطاعم حلال",
     "japan-halal-list": "قائمة المطاعم المعتمدة من مؤسسة الحلال اليابانية",
     "halal-gourmet-japan": "موقع البحث عن مطاعم حلال في اليابان",
