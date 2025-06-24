@@ -16,20 +16,7 @@ const Translations = {
     subtitle: "モスク・ハラル店・便利アプリへのリンク集",
     mosques: "モスク",
     "tokyo-camii": "東京ジャーミイ（代々木上原）",
-
     "ohtsuka-masjid": "日本イスラーム文化センター マスジド大塚",
-    // "icc-mosque" キーを削除
-  },
-  en: {
-    // ...（他の翻訳はそのまま）...
-    "ohtsuka-masjid": "Japan Islamic Culture Center Masjid Otsuka",
-    // "icc-mosque" キーを削除
-  },
-  ar: {
-    // ...（他の翻訳はそのまま）...
-    "ohtsuka-masjid": "مسجد مركز الثقافة الإسلامية الياباني (أوتسوكا)",
-    
-
     "halal-restaurants": "ハラルレストラン",
     "japan-halal-list": "ジャパン・ハラール・ファンデーション認証店一覧",
     "halal-gourmet-japan": "ハラルグルメジャパン（検索サイト）",
@@ -47,7 +34,7 @@ const Translations = {
     subtitle: "Links to Mosques, Halal Restaurants, and Useful Apps",
     mosques: "Mosques",
     "tokyo-camii": "Tokyo Camii (Yoyogi Uehara)",
-    "icc-mosque": "ICC Mosque (Nishi Waseda)",
+    "ohtsuka-masjid": "Japan Islamic Culture Center Masjid Otsuka",
     "halal-restaurants": "Halal Restaurants",
     "japan-halal-list": "Japan Halal Foundation Certified Shops",
     "halal-gourmet-japan": "Halal Gourmet Japan (Search Site)",
@@ -65,7 +52,7 @@ const Translations = {
     subtitle: "روابط للمساجد ومطاعم الحلال والتطبيقات المفيدة",
     mosques: "المساجد",
     "tokyo-camii": "مسجد طوكيو (يويوجي أويهارا)",
-    "Japan Islamic Culture Center Masjid (Mosque) Otsuka": "مركز الثقافة الإسلامية الياباني، مسجد أوتسوكا",
+    "ohtsuka-masjid": "مسجد مركز الثقافة الإسلامية الياباني (أوتسوكا)",
     "halal-restaurants": "مطاعم حلال",
     "japan-halal-list": "قائمة المطاعم المعتمدة من مؤسسة الحلال اليابانية",
     "halal-gourmet-japan": "موقع البحث عن مطاعم حلال في اليابان",
