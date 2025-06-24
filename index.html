@@ -3,35 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>東京ハラル・イスラム情報ガイド</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="東京のハラルレストラン、モスク、イスラム関連情報を提供するガイドサイト">
+    <title>東京ハラル・イスラム情報ガイド - モスク・ハラル店・便利アプリへのリンク集</title>
+    <style>
+        /* 基本スタイル */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            margin: 0;
+            padding: 0.5rem 0;
+            font-size: 2rem;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            background: white;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+        
+        .link-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .link-list li {
+            margin-bottom: 1rem;
+        }
+        
+        .link-list a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #2980b9;
+            transition: color 0.3s;
+        }
+        
+        .link-list a:hover {
+            color: #e74c3c;
+        }
+        
+        .link-list img {
+            width: 32px;
+            height: 32px;
+            margin-right: 1rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: #2c3e50;
+            color: white;
+            margin-top: 2rem;
+        }
+        
+        .contact-link {
+            color: #f39c12;
+            text-decoration: none;
+        }
+        
+        .language-switcher {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+        }
+        
+        .language-switcher button {
+            background: #34495e;
+            color: white;
+            border: none;
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-<header>
+    <header>
         <div class="language-switcher">
             <button data-lang="ja">日本語</button>
             <button data-lang="en">English</button>
             <button data-lang="ar">العربية</button>
         </div>
-        <h1 data-i18n="title">東京ハラル・イスラム情報ガイド</h1>
-        <p data-i18n="subtitle">モスク・ハラル店・便利アプリへのリンク集</p>
-   
+        <h1>東京ハラル・イスラム情報ガイド</h1>
+        <p>モスク・ハラル店・便利アプリへのリンク集</p>
     </header>
+    
     <div class="container">
         <!-- モスク情報 -->
         <section>
-            <h2 data-i18n="mosques">モスク</h2>
+            <h2>モスク</h2>
             <ul class="link-list">
                 <li>
                     <a href="https://tokyocamii.org/" target="_blank">
-                        <img src="images/mosque-icon.png" alt="Mosque" data-i18n-alt="mosque-icon-alt">
-                        <span data-i18n="tokyo-camii">東京ジャーミイ（代々木上原）</span>
+                        <img src="https://cdn-icons-png.flaticon.com/512/3069/3069172.png" alt="モスクアイコン">
+                        <span>東京ジャーミイ（代々木上原）</span>
                     </a>
                 </li>
                 <li>
                     <a href="https://tabunka.tokyo-tsunagari.or.jp/organization/dantai/Masjid.html" target="_blank">
-                        <img src="images/mosque-icon.png" alt="Mosque" data-i18n-alt="mosque-icon-alt">
-                        <span data-i18n="ohtsuka-masjid">日本イスラーム文化センター マスジド大塚</span>
+                        <img src="https://cdn-icons-png.flaticon.com/512/3069/3069172.png" alt="モスクアイコン">
+                        <span>日本イスラーム文化センター マスジド大塚</span>
                     </a>
                 </li>
             </ul>
@@ -39,18 +141,18 @@
 
         <!-- ハラルレストラン -->
         <section>
-            <h2 data-i18n="halal-restaurants">ハラルレストラン</h2>
+            <h2>ハラルレストラン</h2>
             <ul class="link-list">
                 <li>
                     <a href="https://japanhalal.or.jp/shop" target="_blank">
-                        <img src="images/restaurant-icon.png" alt="Restaurant" data-i18n-alt="restaurant-icon-alt">
-                        <span data-i18n="japan-halal-list">ジャパン・ハラール・ファンデーション認証店一覧</span>
+                        <img src="https://cdn-icons-png.flaticon.com/512/857/857681.png" alt="レストランアイコン">
+                        <span>ジャパン・ハラール・ファンデーション認証店一覧</span>
                     </a>
                 </li>
                 <li>
                     <a href="https://www.halalgourmet.jp/" target="_blank">
-                        <img src="images/restaurant-icon.png" alt="Restaurant" data-i18n-alt="restaurant-icon-alt">
-                        <span data-i18n="halal-gourmet-japan">ハラルグルメジャパン（検索サイト）</span>
+                        <img src="https://cdn-icons-png.flaticon.com/512/857/857681.png" alt="レストランアイコン">
+                        <span>ハラルグルメジャパン（検索サイト）</span>
                     </a>
                 </li>
             </ul>
@@ -58,18 +160,18 @@
 
         <!-- 便利アプリ -->
         <section>
-            <h2 data-i18n="useful-apps">便利アプリ</h2>
+            <h2>便利アプリ</h2>
             <ul class="link-list">
                 <li>
                     <a href="https://halalmedia.jp/ja/restaurant-finding-app-for-muslims-halal-gourmet-japan/" target="_blank">
-                        <img src="images/app-icon.png" alt="App" data-i18n-alt="app-icon-alt">
-                        <span data-i18n="halal-gourmet-app">ハラルグルメジャパン（アプリ版）</span>
+                        <img src="https://cdn-icons-png.flaticon.com/512/2891/2891491.png" alt="アプリアイコン">
+                        <span>ハラルグルメジャパン（アプリ版）</span>
                     </a>
                 </li>
                 <li>
                     <a href="https://www.qibla-finder.com/" target="_blank">
-                        <img src="images/app-icon.png" alt="App" data-i18n-alt="app-icon-alt">
-                        <span data-i18n="qibla-finder">キブラ方向検索アプリ</span>
+                        <img src="https://cdn-icons-png.flaticon.com/512/2891/2891491.png" alt="アプリアイコン">
+                        <span>キブラ方向検索アプリ</span>
                     </a>
                 </li>
             </ul>
@@ -77,18 +179,18 @@
 
         <!-- 観光情報 -->
         <section>
-            <h2 data-i18n="travel-info">観光情報</h2>
+            <h2>観光情報</h2>
             <ul class="link-list">
                 <li>
                     <a href="https://www.gotokyo.org/en/plan/tokyo-islamic-guide/index.html" target="_blank">
-                        <img src="images/travel-icon.png" alt="Travel" data-i18n-alt="travel-icon-alt">
-                        <span data-i18n="gotokyo-guide">東京イスラム観光ガイド（公式）</span>
+                        <img src="https://cdn-icons-png.flaticon.com/512/1809/1809557.png" alt="観光アイコン">
+                        <span>東京イスラム観光ガイド（公式）</span>
                     </a>
                 </li>
                 <li>
                     <a href="https://muslimtraveljapan.com/" target="_blank">
-                        <img src="images/travel-icon.png" alt="Travel" data-i18n-alt="travel-icon-alt">
-                        <span data-i18n="muslim-travel-japan">Muslim Travel Japan</span>
+                        <img src="https://cdn-icons-png.flaticon.com/512/1809/1809557.png" alt="観光アイコン">
+                        <span>Muslim Travel Japan</span>
                     </a>
                 </li>
             </ul>
@@ -96,11 +198,19 @@
     </div>
 
     <footer>
-        <p data-i18n="footer-text">© 2024 東京ハラル情報ガイド - イスラム教徒のための便利リンク集</p>
-        <a href="mailto:mementomorikatsu@gmail.com" class="contact-link" data-i18n="contact">Contact me<br>mementomorikatsu@gmail.com</a>
+        <p>© 2024 東京ハラル情報ガイド - イスラム教徒のための便利リンク集</p>
+        <a href="mailto:mementomorikatsu@gmail.com" class="contact-link">Contact me<br>mementomorikatsu@gmail.com</a>
     </footer>
 
-       <script src="script.js"></script>
-
+    <script>
+        // 言語切替機能（簡易版）
+        document.querySelectorAll('.language-switcher button').forEach(button => {
+            button.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                alert('言語を' + lang + 'に切り替えます（デモ機能）');
+                // 実際の実装ではここで言語を切り替える処理を実装
+            });
+        });
+    </script>
 </body>
 </html>
