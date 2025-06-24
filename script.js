@@ -16,9 +16,20 @@ const Translations = {
     subtitle: "モスク・ハラル店・便利アプリへのリンク集",
     mosques: "モスク",
     "tokyo-camii": "東京ジャーミイ（代々木上原）",
-    "Japan Islamic Culture Center Masjid (Mosque) Otsuka": "日本イスラーム文化センター マスジド（モスク）大塚
 
-",
+    "ohtsuka-masjid": "日本イスラーム文化センター マスジド大塚",
+    // "icc-mosque" キーを削除
+  },
+  en: {
+    // ...（他の翻訳はそのまま）...
+    "ohtsuka-masjid": "Japan Islamic Culture Center Masjid Otsuka",
+    // "icc-mosque" キーを削除
+  },
+  ar: {
+    // ...（他の翻訳はそのまま）...
+    "ohtsuka-masjid": "مسجد مركز الثقافة الإسلامية الياباني (أوتسوكا)",
+    
+
     "halal-restaurants": "ハラルレストラン",
     "japan-halal-list": "ジャパン・ハラール・ファンデーション認証店一覧",
     "halal-gourmet-japan": "ハラルグルメジャパン（検索サイト）",
